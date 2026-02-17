@@ -20,7 +20,7 @@ export default function Seksjon7Kontakt() {
       </Card>
 
       <div className="text-sm text-muted">
-        Tips: Skriv gjerne “mål + tidslinje + budsjett” hvis det gjelder markedsføring.
+        Tips: Skriv gjerne “mål + tidslinje + budsjett” om det gjelder markedsføring.
       </div>
     </section>
   );
