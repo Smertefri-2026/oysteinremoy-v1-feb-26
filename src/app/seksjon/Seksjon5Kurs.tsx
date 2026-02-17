@@ -1,11 +1,12 @@
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
+import { MessageSquareText, ClipboardList, Route } from "lucide-react";
 
 export default function Seksjon5Kurs() {
   const kurs = [
-    { t: "Workshop: Posisjon og budskap", d: "Få klarhet i hvem du er for, og hva du skal være kjent for." },
-    { t: "Workshop: Gjennomføring", d: "Fra plan til leveranse – med få, smarte rutiner." },
-    { t: "Workshop: Markedsplan", d: "Kanal, innhold, rytme og prioritering – helt konkret." },
+    { t: "Workshop: Posisjon og budskap", d: "Få klarhet i hvem du er for, og hva du skal være kjent for.", icon: MessageSquareText },
+    { t: "Workshop: Gjennomføring", d: "Fra plan til leveranse – med få, smarte rutiner.", icon: ClipboardList },
+    { t: "Workshop: Markedsplan", d: "Kanal, innhold, rytme og prioritering – helt konkret.", icon: Route },
   ];
 
   return (
@@ -23,12 +24,22 @@ export default function Seksjon5Kurs() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
-        {kurs.map((x) => (
-          <Card key={x.t} className="p-6">
-            <div className="font-bold">{x.t}</div>
-            <div className="text-muted mt-2">{x.d}</div>
-          </Card>
-        ))}
+        {kurs.map((x) => {
+          const Icon = x.icon;
+          return (
+            <Card key={x.t} className="p-6">
+              <div className="flex items-start gap-3">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-(--surface-2) border border-[rgba(2,6,23,0.08)]">
+                  <Icon className="h-5 w-5 text-[#003366]" />
+                </div>
+                <div>
+                  <div className="font-bold">{x.t}</div>
+                  <div className="text-muted mt-2">{x.d}</div>
+                </div>
+              </div>
+            </Card>
+          );
+        })}
       </div>
     </section>
   );

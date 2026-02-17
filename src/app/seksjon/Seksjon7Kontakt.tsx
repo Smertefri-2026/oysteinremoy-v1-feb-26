@@ -10,7 +10,7 @@ export default function Seksjon7Kontakt() {
           Send en kort forespørsel
         </h2>
         <p className="text-muted mt-2 max-w-2xl">
-          Ingen booking her – bare en enkel kontakt. Fortell hva du ønsker (markedsføring, foredrag eller kurs),
+          Fortell hva du ønsker (markedsføring, foredrag eller kurs),
           så svarer jeg så raskt jeg kan.
         </p>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import Turnstile from "react-turnstile";
 import Button from "@/components/ui/Button";
 
 type FormState = "idle" | "sending" | "sent" | "error";
@@ -9,51 +10,49 @@ export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
   const [error, setError] = useState<string | null>(null);
 
-  const endpoint = useMemo(() => {
-    // Hvis du senere lager en Cloudflare Worker/Pages endpoint:
-    // sett NEXT_PUBLIC_CONTACT_ENDPOINT i .env.local
-    // eksempel: https://your-worker.your-subdomain.workers.dev/contact
-    return process.env.NEXT_PUBLIC_CONTACT_ENDPOINT || "";
-  }, []);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setError(null);
-    setState("sending");
 
-    const form = e.currentTarget;
-    const fd = new FormData(form);
-
-    // Hvis du ikke har endpoint enda: fallback til mailto
-    if (!endpoint) {
-      const navn = String(fd.get("name") || "");
-      const email = String(fd.get("email") || "");
-      const tema = String(fd.get("topic") || "");
-      const melding = String(fd.get("message") || "");
-
-      const subject = encodeURIComponent(`Kontakt: ${tema || "Forespørsel"}`);
-      const body = encodeURIComponent(
-        `Navn: ${navn}\nE-post: ${email}\nTema: ${tema}\n\nMelding:\n${melding}\n`
-      );
-
-      window.location.href = `mailto:post@oystein.no?subject=${subject}&body=${body}`;
-      setState("sent");
-      form.reset();
+    // Hvis du vil kreve Turnstile før sending:
+    if (siteKey && !turnstileToken) {
+      setState("error");
+      setError("Bekreft at du ikke er en robot (Turnstile).");
       return;
     }
 
+    setState("sending");
+
+    const form = e.currentTarget;
+
+    const payload = {
+      name: (form.elements.namedItem("name") as HTMLInputElement)?.value || "",
+      email: (form.elements.namedItem("email") as HTMLInputElement)?.value || "",
+      topic: (form.elements.namedItem("topic") as HTMLSelectElement)?.value || "",
+      message:
+        (form.elements.namedItem("message") as HTMLTextAreaElement)?.value || "",
+      turnstileToken, // kan være null hvis siteKey ikke er satt
+    };
+
     try {
-      const res = await fetch(endpoint, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: fd,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
 
+      const data = await res.json().catch(() => ({}));
+
       if (!res.ok) {
-        throw new Error("Kunne ikke sende. Prøv igjen om litt.");
+        throw new Error(data?.error || "Kunne ikke sende. Prøv igjen om litt.");
       }
 
       setState("sent");
       form.reset();
+      setTurnstileToken(null);
     } catch (err: any) {
       setState("error");
       setError(err?.message || "Noe gikk galt.");
@@ -110,30 +109,31 @@ export default function ContactForm() {
         />
       </div>
 
+      {/* Turnstile (vises bare hvis siteKey finnes) */}
+      {siteKey ? (
+        <div className="pt-2">
+          <Turnstile
+            sitekey={siteKey}
+            onVerify={(token) => setTurnstileToken(token)}
+            onExpire={() => setTurnstileToken(null)}
+          />
+        </div>
+      ) : null}
+
       <div className="flex flex-wrap items-center gap-3">
-        <Button
-          type="submit"
-          variant="primary"
-          disabled={state === "sending"}
-        >
+        <Button type="submit" variant="primary" disabled={state === "sending"}>
           {state === "sending" ? "Sender…" : "Send"}
         </Button>
 
         {state === "sent" ? (
           <div className="text-sm font-semibold text-[#005F56]">
-            Takk! Meldingen er klargjort/sendt.
+            Takk! Meldingen er sendt.
           </div>
         ) : null}
 
         {state === "error" ? (
           <div className="text-sm font-semibold text-red-600">
             {error || "Noe gikk galt."}
-          </div>
-        ) : null}
-
-        {!endpoint ? (
-          <div className="text-sm text-muted">
-            (Foreløpig åpner dette e-postklienten din. Når Cloudflare-endpoint er klar, går det automatisk.)
           </div>
         ) : null}
       </div>

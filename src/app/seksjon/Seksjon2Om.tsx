@@ -7,7 +7,7 @@ export default function Seksjon2Om() {
       <div className="space-y-3">
         <div className="text-sm font-semibold text-[#005F56]">Om meg</div>
         <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-          Jeg bygger folk og prosjekter som tar plass
+          Fra retning til gjennomføring
         </h2>
         <p className="text-muted">
           Jeg trives best når andre lykkes: når budskapet blir tydelig, når planen blir gjennomført,
@@ -48,8 +48,9 @@ export default function Seksjon2Om() {
             />
           </div>
         </Card>
-        <div className="text-sm text-muted">
-        Filminnspilling på Eidsvollsbygningen.
+
+            <div className="text-sm text-muted">
+          Filminnspilling på Eidsvollsbygningen.
         </div>
       </div>
     </section>
