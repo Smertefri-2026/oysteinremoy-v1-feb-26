@@ -8,7 +8,7 @@ export default function Seksjon1Hero() {
   const proof = [
 { icon: Megaphone, title: "20+ år", desc: "Markedsføring + nettsider/apper" },
     { icon: Briefcase, title: "Ledererfaring", desc: "Daglig leder + næringsliv" },
-    { icon: Users, title: "Frivillighetsleder", desc: "1000+ samtidig (flere ganger)" },
+    { icon: Users, title: "Frivillighetsleder", desc: "Både små og store arrangementer" },
     { icon: Plane, title: "Reiseleder", desc: "Trygg, rolig og gjennomførende" },
     { icon: Mic, title: "Kurs & foredrag", desc: "Praktisk og engasjerende" },
   ];
