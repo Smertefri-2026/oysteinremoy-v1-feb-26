@@ -1,110 +1,87 @@
+// /src/app/api/contact/route.ts
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
+export const runtime = "nodejs"; // viktig på Vercel for Resend
+
+type Payload = {
+  name: string;
+  email: string;
+  topic: string;
+  message: string;
+  turnstileToken?: string | null;
+};
+
+async function verifyTurnstile(token: string, secret: string) {
+  const formData = new FormData();
+  formData.append("secret", secret);
+  formData.append("response", token);
+
+  const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = (await res.json()) as { success?: boolean; "error-codes"?: string[] };
+  return data;
+}
+
 export async function POST(req: Request) {
-  try {
-    const data = await req.json();
+  const body = (await req.json().catch(() => null)) as Payload | null;
+  if (!body) return NextResponse.json({ ok: false, error: "Ugyldig payload" }, { status: 400 });
 
-    const name = String(data?.name || "").trim();
-    const email = String(data?.email || "").trim();
-    const topic = String(data?.topic || "").trim();
-    const message = String(data?.message || "").trim();
-    const turnstileToken = data?.turnstileToken ? String(data.turnstileToken) : null;
+  const { name, email, topic, message, turnstileToken } = body;
 
-    if (!name || !email || !message) {
+  // 1) Turnstile (valgfritt, men anbefalt i prod)
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  if (secret) {
+    if (!turnstileToken) {
+      return NextResponse.json({ ok: false, error: "Mangler Turnstile-token." }, { status: 400 });
+    }
+
+    const result = await verifyTurnstile(turnstileToken, secret);
+    if (!result?.success) {
       return NextResponse.json(
-        { ok: false, error: "Mangler navn, e-post eller melding." },
+        { ok: false, error: "Turnstile-feil. Prøv igjen.", details: result?.["error-codes"] || [] },
         { status: 400 }
       );
     }
+  }
 
-    // 1) Turnstile server-side verify (hvis du har aktivert widget)
-    const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-    const secretKey = process.env.TURNSTILE_SECRET_KEY;
+  // 2) Resend
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = process.env.CONTACT_TO_EMAIL;
+  const from = process.env.CONTACT_FROM_EMAIL;
 
-    if (siteKey) {
-      if (!secretKey) {
-        return NextResponse.json(
-          { ok: false, error: "TURNSTILE_SECRET_KEY mangler i miljøvariabler." },
-          { status: 500 }
-        );
-      }
-      if (!turnstileToken) {
-        return NextResponse.json(
-          { ok: false, error: "Bekreft at du ikke er en robot." },
-          { status: 400 }
-        );
-      }
+  if (!apiKey) return NextResponse.json({ ok: false, error: "Mangler RESEND_API_KEY" }, { status: 500 });
+  if (!to) return NextResponse.json({ ok: false, error: "Mangler CONTACT_TO_EMAIL" }, { status: 500 });
+  if (!from) return NextResponse.json({ ok: false, error: "Mangler CONTACT_FROM_EMAIL" }, { status: 500 });
 
-      const ip =
-        req.headers.get("cf-connecting-ip") ||
-        req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-        undefined;
+  const resend = new Resend(apiKey);
 
-      const form = new URLSearchParams();
-      form.append("secret", secretKey);
-      form.append("response", turnstileToken);
-      if (ip) form.append("remoteip", ip);
+  const subject = `Kontakt (${topic || "Forespørsel"}) – ${name || "Ukjent"}`;
+  const text =
+`Navn: ${name}
+E-post: ${email}
+Tema: ${topic}
 
-      const verifyRes = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: form.toString(),
-      });
+Melding:
+${message}
+`;
 
-      const verify = await verifyRes.json();
-
-      if (!verify?.success) {
-        return NextResponse.json(
-          { ok: false, error: "Turnstile feilet. Prøv igjen.", details: verify },
-          { status: 400 }
-        );
-      }
-    }
-
-    // 2) Send e-post via Resend
-    const resendKey = process.env.RESEND_API_KEY;
-    if (!resendKey) {
-      return NextResponse.json(
-        { ok: false, error: "RESEND_API_KEY mangler i miljøvariabler." },
-        { status: 500 }
-      );
-    }
-
-    const to = process.env.CONTACT_TO_EMAIL || "post@oystein.no";
-    const from = process.env.CONTACT_FROM_EMAIL || "Kontakt <onboarding@resend.dev>";
-
-    const resend = new Resend(resendKey);
-
-    const subject = `Kontakt (${topic || "Forespørsel"}): ${name}`;
-    const text = [
-      `Navn: ${name}`,
-      `E-post: ${email}`,
-      `Tema: ${topic || "-"}`,
-      ``,
-      `Melding:`,
-      message,
-    ].join("\n");
-
-    const { error } = await resend.emails.send({
+  try {
+    await resend.emails.send({
       from,
       to,
-      replyTo: email, // så du kan svare rett til avsender
       subject,
       text,
+      replyTo: email || undefined, // gjør at du kan svare direkte
     });
 
-    if (error) {
-      return NextResponse.json(
-        { ok: false, error: `Resend-feil: ${error.message}` },
-        { status: 500 }
-      );
-    }
-
     return NextResponse.json({ ok: true });
-  } catch (e: any) {
+  } catch (err: any) {
     return NextResponse.json(
-      { ok: false, error: e?.message || "Ukjent feil." },
+      { ok: false, error: err?.message || "Kunne ikke sende e-post." },
       { status: 500 }
     );
   }
