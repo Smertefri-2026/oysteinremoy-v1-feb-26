@@ -11,7 +11,14 @@ export default function ContactForm() {
   const [error, setError] = useState<string | null>(null);
 
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [tsKey, setTsKey] = useState(0); // ✅ force remount Turnstile
+
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+  function resetTurnstile() {
+    setTurnstileToken(null);
+    setTsKey((n) => n + 1); // ✅ remount widget -> fresh token
+  }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -47,12 +54,16 @@ export default function ContactForm() {
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
+        // ✅ hvis token er brukt/expired/feil, få ny challenge
+        resetTurnstile();
         throw new Error(data?.error || "Kunne ikke sende. Prøv igjen om litt.");
       }
 
       setState("sent");
       form.reset();
-      setTurnstileToken(null);
+
+      // ✅ viktig: etter vellykket send, reset challenge så den ikke “henger”
+      resetTurnstile();
     } catch (err: any) {
       setState("error");
       setError(err?.message || "Noe gikk galt.");
@@ -113,9 +124,11 @@ export default function ContactForm() {
       {siteKey ? (
         <div className="pt-2">
           <Turnstile
+            key={tsKey}
             sitekey={siteKey}
             onVerify={(token) => setTurnstileToken(token)}
-            onExpire={() => setTurnstileToken(null)}
+            onExpire={() => resetTurnstile()}
+            onError={() => resetTurnstile()}
           />
         </div>
       ) : null}
