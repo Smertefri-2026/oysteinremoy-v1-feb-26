@@ -13,8 +13,8 @@ export default function Seksjon1Hero() {
   return (
     <section className="overflow-hidden rounded-(--radius) bg-surface shadow-sm">
       <div className="bg-linear-to-br from-[rgba(0,51,102,0.10)] via-[rgba(0,95,86,0.06)] to-transparent">
-        <div className="p-5 sm:p-8 md:p-12">
-          <div className="grid gap-6 lg:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+<div className="p-4 sm:p-6 md:p-10 lg:p-12">
+            <div className="grid gap-6 lg:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             {/* Left */}
             <div className="space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-2 text-sm text-muted">

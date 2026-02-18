@@ -6,7 +6,7 @@ import { Megaphone, Briefcase, Plane, Users, Mic } from "lucide-react";
 
 export default function Seksjon1Hero() {
   const proof = [
-{ icon: Megaphone, title: "20+ år", desc: "Markedsføring + nettsider/apper" },
+    { icon: Megaphone, title: "20+ år", desc: "Markedsføring + nettsider/apper" },
     { icon: Briefcase, title: "Ledererfaring", desc: "Daglig leder + næringsliv" },
     { icon: Users, title: "Frivillighetsleder", desc: "Både små og store arrangementer" },
     { icon: Plane, title: "Reiseleder", desc: "Trygg, rolig og gjennomførende" },
@@ -16,10 +16,11 @@ export default function Seksjon1Hero() {
   return (
     <section className="overflow-hidden rounded-(--radius) bg-surface shadow-sm">
       <div className="bg-linear-to-br from-[rgba(0,51,102,0.10)] via-[rgba(0,95,86,0.06)] to-transparent">
-        <div className="p-8 md:p-12">
-          {/* TOP: Hero content */}
-<div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-              {/* Left */}
+        {/* MATCH undersider: p-5 sm:p-8 md:p-12 */}
+<div className="p-4 sm:p-6 md:p-10 lg:p-12">
+            {/* MATCH undersider: gap-6 sm:gap-8 */}
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            {/* Left */}
             <div className="space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-2 text-sm text-muted">
                 <span className="h-2 w-2 rounded-full bg-[#005F56]" />
@@ -31,13 +32,13 @@ export default function Seksjon1Hero() {
                 <span className="text-[#005F56]">Remøy</span>
               </h1>
 
-            <p className="text-muted text-base md:text-lg max-w-xl">
-  Som leder motiveres jeg av å gjøre andre bedre – og innen markedsføring trives jeg
-  best med de som vil ta en tydelig posisjon i markedet sitt. Ofte ender det med:{" "}
-  <span className="font-semibold text-[#003366]">
-    «Ja.. ja.. det måtte en Sunnmøring til 😝.»
-  </span>
-</p>
+              <p className="text-muted text-base md:text-lg max-w-xl">
+                Som leder motiveres jeg av å gjøre andre bedre – og innen markedsføring trives jeg
+                best med de som vil ta en tydelig posisjon i markedet sitt. Ofte ender det med:{" "}
+                <span className="font-semibold text-[#003366]">
+                  «Ja.. ja.. det måtte en Sunnmøring til 😝.»
+                </span>
+              </p>
 
               <div className="flex flex-wrap gap-3 pt-2">
                 <Button asChild variant="primary">
@@ -56,7 +57,8 @@ export default function Seksjon1Hero() {
             {/* Right */}
             <Card className="p-6">
               <div className="grid gap-5 md:grid-cols-[0.95fr_1.05fr] md:items-start">
-<div className="relative overflow-hidden rounded-(--radius) bg-[rgba(0,51,102,0.06)] border border-[rgba(2,6,23,0.06)] shadow-sm">                  <Image
+                <div className="relative overflow-hidden rounded-(--radius) bg-[rgba(0,51,102,0.06)] border border-[rgba(2,6,23,0.06)] shadow-sm">
+                  <Image
                     src="/Øystein-Remøy-pt.png"
                     alt="Øystein Remøy"
                     width={800}
@@ -84,27 +86,26 @@ export default function Seksjon1Hero() {
                       </div>
                     ))}
                   </div>
-
-
                 </div>
               </div>
             </Card>
           </div>
 
-          {/* BOTTOM: Proof row (flyttet hit for bedre desktop-layout) */}
+          {/* Proof row */}
           <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
             {proof.map((item) => {
               const Icon = item.icon;
               return (
                 <div
                   key={item.title}
-className="flex h-full items-center gap-3 rounded-(--radius) bg-(--surface-2) border border-[rgba(2,6,23,0.08)] px-4 py-4"                >
+                  className="flex h-full items-center gap-3 rounded-(--radius) bg-(--surface-2) border border-[rgba(2,6,23,0.08)] px-4 py-4"
+                >
                   <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/60 border border-[rgba(2,6,23,0.08)]">
                     <Icon className="h-5 w-5 text-[#003366]" />
                   </div>
                   <div className="leading-tight">
                     <div className="text-sm font-extrabold">{item.title}</div>
-<div className="text-xs text-muted leading-snug">{item.desc}</div>
+                    <div className="text-xs text-muted leading-snug">{item.desc}</div>
                   </div>
                 </div>
               );

@@ -25,7 +25,7 @@ export default function Page({
   const hasHeader = !!title || !!subtitle || !!actions;
 
   return (
-    <div className={["py-6 sm:py-10 lg:py-12", spacingMap[spacing]].join(" ")}>
+    <div className={spacingMap[spacing]}>
       {hasHeader ? (
         <header
           className={[

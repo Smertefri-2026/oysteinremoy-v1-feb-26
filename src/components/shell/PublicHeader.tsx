@@ -94,8 +94,8 @@ export default function PublicHeader({
                   <Link
                     key={l.href}
                     href={l.href}
-className="rounded-xl px-3 py-3 font-semibold text-white/90 hover:text-white hover:bg-white/10 transition text-center"                    onClick={() => setOpen(false)}
-                  >
+className="block w-full rounded-xl px-3 py-2 text-center font-semibold text-white/90 hover:text-white hover:bg-white/10 transition"  
+                >
                     {l.label}
                   </Link>
                 ))}
