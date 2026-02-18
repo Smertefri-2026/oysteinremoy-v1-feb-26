@@ -5,9 +5,9 @@ import { BadgeCheck, Clock, MapPin, Users } from "lucide-react";
 
 export default function KursHero() {
   const points = [
-    { icon: Clock, title: "Varighet", desc: "3t / 1/2 dag / 1 dag (tilpasses)" },
+    { icon: Clock, title: "Varighet", desc: "3 t / 1/2 dag / 1 dag (tilpasses)" },
     { icon: Users, title: "Deltakere", desc: "5–50 (kan tilpasses)" },
-    { icon: MapPin, title: "Format", desc: "Onsite / digital" },
+    { icon: MapPin, title: "Format", desc: "Onsite / digitalt" },
     { icon: BadgeCheck, title: "Inkludert", desc: "Maler, oppgaver og oppsummering" },
   ];
 
@@ -15,8 +15,7 @@ export default function KursHero() {
     <section className="overflow-hidden rounded-(--radius) bg-surface shadow-sm">
       <div className="bg-linear-to-br from-[rgba(0,51,102,0.10)] via-[rgba(0,95,86,0.06)] to-transparent">
         <div className="p-4 sm:p-6 md:p-10 lg:p-12">
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            {/* Left */}
+<div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">            {/* Left */}
             <div className="space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-2 text-sm text-muted">
                 <span className="h-2 w-2 rounded-full bg-[#005F56]" />
@@ -24,18 +23,18 @@ export default function KursHero() {
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
-                Workshops som gir fart –{" "}
-                <span className="text-[#005F56]">og som blir gjennomført</span>
+                Workshops som gir{" "}
+                <span className="text-[#005F56]">fremdrift</span> – og konkrete neste steg
               </h1>
 
               <p className="text-muted text-base sm:text-lg max-w-xl">
-                Konkrete oppgaver, maler og beslutninger der og da. Du går ut med en plan,
-                en struktur og neste steg som faktisk er lett å gjøre.
+                Vi jobber praktisk med budskap, prioriteringer og gjennomføring. Du går ut med en
+                enkel plan, tydelige valg og oppgaver som er lett å ta i bruk med én gang.
               </p>
 
               <div className="flex flex-wrap gap-3 pt-1">
                 <Button asChild variant="primary">
-                  <a href="#kontakt">Book workshop</a>
+                  <a href="#kontakt">Send forespørsel</a>
                 </Button>
                 <Button asChild variant="secondary">
                   <a href="#pakker">Se opplegg</a>
@@ -43,7 +42,7 @@ export default function KursHero() {
               </div>
 
               <div className="text-sm text-muted pt-1">
-                Struktur • tempo • eierskap
+                Struktur • tempo • gjennomføring
               </div>
             </div>
 
@@ -72,7 +71,8 @@ export default function KursHero() {
               </div>
 
               <div className="mt-4 rounded-(--radius) border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-3 text-sm text-muted">
-                Tips: Send mål + deltakerantall + format – så foreslår jeg opplegg.
+                Send mål + deltakerantall + format (og gjerne tema) – så får du forslag til opplegg
+                innen 24–48 timer.
               </div>
             </Card>
           </div>

@@ -15,9 +15,8 @@ export default function Seksjon1Hero() {
     <section className="overflow-hidden rounded-(--radius) bg-surface shadow-sm">
       <div className="bg-linear-to-br from-[rgba(0,51,102,0.10)] via-[rgba(0,95,86,0.06)] to-transparent">
         <div className="p-4 sm:p-6 md:p-10 lg:p-12">
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            {/* Left */}
-            <div className="space-y-5">
+<div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+              <div className="space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-2 text-sm text-muted">
                 <span className="h-2 w-2 rounded-full bg-[#005F56]" />
                 Markedsføring
@@ -25,17 +24,17 @@ export default function Seksjon1Hero() {
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
                 Markedsføring som gir{" "}
-                <span className="text-[#005F56]">flere henvendelser</span> – uten mer støy
+                <span className="text-[#005F56]">flere henvendelser</span> – og tydelige neste steg
               </h1>
 
               <p className="text-muted text-base sm:text-lg max-w-xl">
-                Vi bygger praktisk: budskap → side → måling → oppfølging. Resultatet er bedre flyt,
-                bedre konvertering og tydelige neste steg.
+                Vi jobber praktisk med budskap, side og oppfølging: tydelig retning, mindre friksjon
+                og høyere konvertering.
               </p>
 
               <div className="flex flex-wrap gap-3 pt-1">
                 <Button asChild variant="primary">
-                  <a href="#kontakt">Kontakt meg</a>
+                  <a href="#kontakt">Send forespørsel</a>
                 </Button>
                 <Button asChild variant="secondary">
                   <a href="#steg">Se stegene</a>
@@ -43,7 +42,7 @@ export default function Seksjon1Hero() {
               </div>
 
               <div className="text-sm text-muted pt-1">
-                Tydelig budskap • målbar effekt • ryddig prosess
+                Tydelig • målbar • ryddig
               </div>
             </div>
 
@@ -72,7 +71,8 @@ export default function Seksjon1Hero() {
               </div>
 
               <div className="mt-4 rounded-(--radius) border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-3 text-sm text-muted">
-                Vil du ha en konkret plan? Send mål + målgruppe + dagens løsning – så foreslår jeg neste steg.
+                Send mål + budsjett + frist (og gjerne lenke til dagens side) – så får du forslag til
+                opplegg innen 24–48 timer.
               </div>
             </Card>
           </div>

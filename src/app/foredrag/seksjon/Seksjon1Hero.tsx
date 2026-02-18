@@ -15,8 +15,7 @@ export default function Seksjon1Hero() {
     <section className="overflow-hidden rounded-(--radius) bg-surface shadow-sm">
       <div className="bg-linear-to-br from-[rgba(0,51,102,0.10)] via-[rgba(0,95,86,0.06)] to-transparent">
         <div className="p-4 sm:p-6 md:p-10 lg:p-12">
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            {/* Left */}
+<div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">            {/* Left */}
             <div className="space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-2 text-sm text-muted">
                 <span className="h-2 w-2 rounded-full bg-[#005F56]" />
@@ -24,18 +23,18 @@ export default function Seksjon1Hero() {
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
-                Tema som gir energi,{" "}
-                <span className="text-[#005F56]">motivasjon</span> og retning
+                Foredrag som gir{" "}
+                <span className="text-[#005F56]">energi</span> – og konkrete neste steg
               </h1>
 
               <p className="text-muted text-base sm:text-lg max-w-xl">
-                Konkrete foredrag om ledelse, kommunikasjon, salg og posisjon – med humor og varme,
-                og alltid med tiltak du kan bruke dagen etter.
+                Konkrete tema innen ledelse, kommunikasjon, salg og posisjon. Målet er å gjøre det
+                lett å ta beslutninger – og faktisk få ting gjennomført etterpå.
               </p>
 
               <div className="flex flex-wrap gap-3 pt-1">
                 <Button asChild variant="primary">
-                  <a href="#kontakt">Book forespørsel</a>
+                  <a href="#kontakt">Send forespørsel</a>
                 </Button>
                 <Button asChild variant="secondary">
                   <a href="#tema">Se tema</a>
@@ -43,7 +42,7 @@ export default function Seksjon1Hero() {
               </div>
 
               <div className="text-sm text-muted pt-1">
-                Praktisk • engasjerende • gjennomførbart
+                Tydelig • engasjerende • gjennomførbart
               </div>
             </div>
 
@@ -72,7 +71,8 @@ export default function Seksjon1Hero() {
               </div>
 
               <div className="mt-4 rounded-(--radius) border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-3 text-sm text-muted">
-                Tips: Send dato + antall deltakere + ønsket tema – så svarer jeg med forslag.
+                Send dato + antall deltakere + format (og gjerne ønsket tema) – så får du forslag til
+                opplegg innen 24–48 timer.
               </div>
             </Card>
           </div>

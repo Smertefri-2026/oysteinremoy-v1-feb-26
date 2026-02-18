@@ -7,24 +7,21 @@ import { Megaphone, Briefcase, Plane, Users, Mic } from "lucide-react";
 export default function Seksjon1Hero() {
   const proof = [
     { icon: Megaphone, title: "20+ år", desc: "Markedsføring + nettsider/apper" },
-    { icon: Briefcase, title: "Ledererfaring", desc: "Daglig leder + næringsliv" },
-    { icon: Users, title: "Frivillighetsleder", desc: "Både små og store arrangementer" },
-    { icon: Plane, title: "Reiseleder", desc: "Trygg, rolig og gjennomførende" },
-    { icon: Mic, title: "Kurs & foredrag", desc: "Praktisk og engasjerende" },
+    { icon: Briefcase, title: "Ledelse", desc: "Daglig leder + næringsliv" },
+    { icon: Users, title: "Gjennomføring", desc: "Prosjekter + arrangementer" },
+    { icon: Plane, title: "Reiseleder", desc: "Trygg, rolig og strukturert" },
+    { icon: Mic, title: "Kurs & foredrag", desc: "Praktisk, engasjerende og nyttig" },
   ];
 
   return (
     <section className="overflow-hidden rounded-(--radius) bg-surface shadow-sm">
       <div className="bg-linear-to-br from-[rgba(0,51,102,0.10)] via-[rgba(0,95,86,0.06)] to-transparent">
-        {/* MATCH undersider: p-5 sm:p-8 md:p-12 */}
-<div className="p-4 sm:p-6 md:p-10 lg:p-12">
-            {/* MATCH undersider: gap-6 sm:gap-8 */}
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            {/* Left */}
+        <div className="p-4 sm:p-6 md:p-10 lg:p-12">
+<div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">            {/* Left */}
             <div className="space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-2 text-sm text-muted">
                 <span className="h-2 w-2 rounded-full bg-[#005F56]" />
-                Foredrag · kurs · markedsføring
+                Foredrag • kurs • markedsføring
               </div>
 
               <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
@@ -33,16 +30,16 @@ export default function Seksjon1Hero() {
               </h1>
 
               <p className="text-muted text-base md:text-lg max-w-xl">
-                Som leder motiveres jeg av å gjøre andre bedre – og innen markedsføring trives jeg
-                best med de som vil ta en tydelig posisjon i markedet sitt. Ofte ender det med:{" "}
+                Jeg hjelper folk og bedrifter med å bli valgt – gjennom tydelig budskap, ryddig
+                struktur og løsninger som faktisk blir gjennomført. Ofte hører jeg:{" "}
                 <span className="font-semibold text-[#003366]">
-                  «Ja.. ja.. det måtte en Sunnmøring til 😝.»
+                  «Ja… det måtte en sunnmøring til.»
                 </span>
               </p>
 
               <div className="flex flex-wrap gap-3 pt-2">
                 <Button asChild variant="primary">
-                  <a href="/kontakt">Kontakt meg</a>
+                  <a href="/kontakt">Send forespørsel</a>
                 </Button>
                 <Button asChild variant="secondary">
                   <a href="/markedsforing">Se markedsføring</a>
@@ -50,7 +47,7 @@ export default function Seksjon1Hero() {
               </div>
 
               <div className="text-sm text-muted pt-2">
-                Tydelig • inkluderende • handlekraftig
+                Tydelig • ryddig • handlingsorientert
               </div>
             </div>
 
@@ -73,9 +70,9 @@ export default function Seksjon1Hero() {
 
                   <div className="space-y-2">
                     {[
-                      { k: "Foredrag", v: "45–60 min • energi + konkrete budskap" },
+                      { k: "Foredrag", v: "45–60 min • energi + konkrete tiltak" },
                       { k: "Kurs", v: "Workshops • ledelse • kommunikasjon • gjennomføring" },
-                      { k: "Markedsføring", v: "Strategi • nett • løsninger • vekst" },
+                      { k: "Markedsføring", v: "Strategi • nettside • måling • oppfølging" },
                     ].map((row) => (
                       <div
                         key={row.k}

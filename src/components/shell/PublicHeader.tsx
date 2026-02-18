@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
@@ -28,21 +28,30 @@ export default function PublicHeader({
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  // ✅ Lukk mobilmeny automatisk ved navigering
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
   return (
     <header className="sticky top-0 z-50">
-      {/* Fargerik header (DigiMat-ish / premium) */}
       <div className="bg-linear-to-r from-[#003366] to-[#005F56]">
         <Container className="py-4">
           <div className="flex items-center justify-between gap-3">
             {/* Logo / Brand */}
-            <Link href={brandHref} aria-label="Øystein Remøy" className="flex items-center">
+            <Link
+              href={brandHref}
+              aria-label="Øystein Remøy"
+              className="flex items-center"
+              onClick={() => setOpen(false)} // ✅ hvis man trykker logo på mobil
+            >
               <span className="font-logo text-4xl leading-none tracking-tight drop-shadow-sm">
                 <span style={{ color: "#FFFFFF" }}>Øystein</span>{" "}
-                <span style={{ color: "#D9FFF7" }}>Remøy</span>
+                <span style={{ color: "#FFFFFF" }}>Remøy</span>
               </span>
             </Link>
 
-            {/* Desktop nav (hvit) */}
+            {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-1">
               {links.map((l) => {
                 const active = pathname === l.href || pathname.startsWith(l.href + "/");
@@ -94,8 +103,9 @@ export default function PublicHeader({
                   <Link
                     key={l.href}
                     href={l.href}
-className="block w-full rounded-xl px-3 py-2 text-center font-semibold text-white/90 hover:text-white hover:bg-white/10 transition"  
-                >
+                    onClick={() => setOpen(false)} // ✅ lukk meny ved klikk
+                    className="block w-full rounded-xl px-3 py-2 text-center font-semibold text-white/90 hover:text-white hover:bg-white/10 transition"
+                  >
                     {l.label}
                   </Link>
                 ))}

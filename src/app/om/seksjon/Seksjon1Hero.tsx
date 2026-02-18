@@ -4,18 +4,17 @@ import { Compass, Hammer, Target, Users, Sparkles } from "lucide-react";
 
 export default function Seksjon1Hero() {
   const points = [
-    { icon: Target, title: "Fokus", desc: "Budskap, struktur, konvertering" },
-    { icon: Hammer, title: "Bygger", desc: "Nettsider, portaler, systemer" },
-    { icon: Users, title: "Kurs/foredrag", desc: "Ledelse, salg, posisjon" },
-    { icon: Compass, title: "Reise", desc: "Italia, Spania, Portugal" },
+    { icon: Target, title: "Fokus", desc: "Budskap • struktur • gjennomføring" },
+    { icon: Hammer, title: "Bygger", desc: "Nettsider • portaler • systemer" },
+    { icon: Users, title: "Kurs & foredrag", desc: "Ledelse • salg • posisjon" },
+    { icon: Compass, title: "Reise", desc: "Italia • Spania • Portugal" },
   ];
 
   return (
     <section className="overflow-hidden rounded-(--radius) bg-surface shadow-sm">
       <div className="bg-linear-to-br from-[rgba(0,51,102,0.10)] via-[rgba(0,95,86,0.06)] to-transparent">
-<div className="p-4 sm:p-6 md:p-10 lg:p-12">
-            <div className="grid gap-6 lg:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            {/* Left */}
+        <div className="p-4 sm:p-6 md:p-10 lg:p-12">
+<div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">            {/* Left */}
             <div className="space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-2 text-sm text-muted">
                 <span className="h-2 w-2 rounded-full bg-[#005F56]" />
@@ -29,12 +28,12 @@ export default function Seksjon1Hero() {
 
               <p className="text-muted text-base md:text-lg max-w-xl">
                 Jeg kombinerer markedsføring, ledelse og praktisk bygging av digitale løsninger.
-                Målet er alltid det samme: tydeligere posisjon, bedre flyt og mer gjennomføring.
+                Målet er alltid det samme: tydeligere budskap, bedre struktur og mer gjennomføring.
               </p>
 
               <div className="flex flex-wrap gap-3 pt-2">
                 <Button asChild variant="primary">
-                  <a href="#kontakt">Ta kontakt</a>
+                  <a href="#kontakt">Send forespørsel</a>
                 </Button>
                 <Button asChild variant="secondary">
                   <a href="/markedsforing">Se markedsføring</a>
@@ -74,7 +73,7 @@ export default function Seksjon1Hero() {
 
                 <div className="flex items-center gap-2 text-sm text-muted pt-1">
                   <Sparkles className="h-4 w-4 text-[#003366]" />
-                  “Mindre friksjon, mer flyt.”
+                  Mindre friksjon. Mer flyt.
                 </div>
               </div>
             </Card>

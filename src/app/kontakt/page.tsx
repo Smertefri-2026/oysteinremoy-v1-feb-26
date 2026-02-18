@@ -14,8 +14,6 @@ export default function KontaktPage() {
   const points = [
     { icon: Clock, title: "Svar", desc: "Normalt innen 24–48 timer" },
     { icon: CheckCircle2, title: "Neste steg", desc: "Du får forslag til opplegg + plan" },
-    { icon: Phone, title: "Telefon", desc: "Legg inn i skjema hvis du vil" },
-    { icon: Mail, title: "E-post", desc: "post@oysteinremoy.no" },
   ];
 
   return (
@@ -72,9 +70,7 @@ export default function KontaktPage() {
                     })}
                   </div>
 
-                  <div className="mt-4 rounded-(--radius) border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-3 text-sm text-muted">
-                    Jo mer konkret du er, jo raskere kan jeg gi et presist forslag.
-                  </div>
+                  
                 </Card>
               </div>
             </div>

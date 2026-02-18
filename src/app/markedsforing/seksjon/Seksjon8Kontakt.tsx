@@ -1,5 +1,5 @@
-import Card from "@/components/ui/Card";
 import ContactForm from "@/components/forms/ContactForm";
+import Card from "@/components/ui/Card";
 
 export default function Seksjon8Kontakt() {
   return (
@@ -7,21 +7,16 @@ export default function Seksjon8Kontakt() {
       <div>
         <div className="text-sm font-semibold text-[#005F56]">Kontakt</div>
         <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-          Få et konkret forslag til neste steg
+          Book en forespørsel
         </h2>
         <p className="text-muted mt-2 max-w-2xl">
-          Skriv kort hva du selger, hvem du selger til, og hva du ønsker å oppnå – så svarer jeg med et
-          forslag til plan og prioritering.
+          Fortell litt om mål, antall deltakere og ønsket dato – så svarer jeg raskt.
         </p>
       </div>
 
       <Card className="p-6">
         <ContactForm />
       </Card>
-
-      <div className="text-sm text-muted">
-        Tips: Legg gjerne ved “mål + tidslinje + budsjett” hvis du ønsker at jeg foreslår en konkret pakke.
-      </div>
     </section>
   );
 }

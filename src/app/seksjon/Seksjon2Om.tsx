@@ -39,8 +39,10 @@ export default function Seksjon2Om() {
 
       <div className="grid gap-4">
         {/* Beige ramme + bilde inni */}
-        <div className="media-frame">
-          <div className="relative aspect-4/5 overflow-hidden rounded-xl">
+              <div className="flex justify-center order-2 lg:order-1">
+          <div className="w-full max-w-100">
+            <div className="rounded-2xl border border-[rgba(2,6,23,0.10)] bg-[#F3E8DA] p-3 shadow-sm">
+              <div className="relative aspect-4/3 overflow-hidden rounded-xl">
             <Image
               src="/Øystein-Remøy-eidsvoll.jpeg"
               alt="Øystein Remøy"
@@ -48,10 +50,10 @@ export default function Seksjon2Om() {
               className="object-cover"
             />
           </div>
-        </div>
+                    </div>
+                    </div>
 
-        <div className="text-sm text-muted">
-          Filminnspilling på Eidsvollsbygningen.
+
         </div>
       </div>
     </section>
