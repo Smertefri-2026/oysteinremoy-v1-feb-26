@@ -1,25 +1,31 @@
+// src/app/om/page.tsx
 import type { Metadata } from "next";
 import Page from "@/components/layout/Page";
 
-export const metadata: Metadata = {
-  title: "Om Øystein Remøy",
-  description: "Lederprofil og bakgrunn: markedsføring, gjennomføring, foredrag og kurs.",
-};
+import Seksjon1Hero from "./seksjon/Seksjon1Hero";
+import Seksjon2Bakgrunn from "./seksjon/Seksjon2Bakgrunn";
+import Seksjon3Erfaring from "./seksjon/Seksjon3Erfaring";
+import Seksjon4Bygger from "./seksjon/Seksjon4Bygger";
+import Seksjon5Mennesker from "./seksjon/Seksjon5Mennesker";
+import Seksjon6Stil from "./seksjon/Seksjon6Stil";
+import Seksjon7Kontakt from "./seksjon/Seksjon7Kontakt";
+
+
 
 export default function OmPage() {
   return (
     <Page
-      title="Om Øystein Remøy"
-      subtitle="Lederprofil, bakgrunn og hva jeg tilbyr."
-      spacing="roomy"
-      size="lg"
+     
     >
-      <section className="rounded-(--radius) border border-border bg-surface p-6">
-        <h2 className="text-xl font-semibold">Kort oppsummert</h2>
-        <p className="mt-2 text-muted">
-          Skriv 5–8 linjer om markedsføring, ledelse og gjennomføring (vi fyller inn etterpå).
-        </p>
-      </section>
+      <div className="grid gap-14">
+        <Seksjon1Hero />
+        <Seksjon2Bakgrunn />
+        <Seksjon3Erfaring />
+        <Seksjon4Bygger />
+        <Seksjon5Mennesker />
+        <Seksjon6Stil />
+        <Seksjon7Kontakt />
+      </div>
     </Page>
   );
 }

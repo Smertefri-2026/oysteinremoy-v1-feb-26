@@ -1,33 +1,37 @@
+// src/app/kurs/page.tsx
 import type { Metadata } from "next";
 import Page from "@/components/layout/Page";
 
+import KursHero from "./seksjon/KursHero";
+import Seksjon1Workshop from "./seksjon/Seksjon1Workshop";
+import Seksjon2Ledelse from "./seksjon/Seksjon2Ledelse";
+import Seksjon3Kommunikasjon from "./seksjon/Seksjon3Kommunikasjon";
+import Seksjon4SalgOgCRM from "./seksjon/Seksjon4SalgOgCRM";
+import Seksjon5DigitalStrategi from "./seksjon/Seksjon5DigitalStrategi";
+import Seksjon6Nettbutikk from "./seksjon/Seksjon6Nettbutikk";
+import Seksjon7Kapitalplan from "./seksjon/Seksjon7Kapitalplan";
+import Seksjon8Kontakt from "./seksjon/Seksjon8Kontakt";
+
 export const metadata: Metadata = {
   title: "Kurs og workshops – Øystein Remøy",
-  description: "Kurs i ledelse, kapitalplan, kommunikasjon og digital strategi.",
+  description: "Praktiske kurs og workshops i ledelse, kommunikasjon, salg/CRM, digital strategi og kapitalplan.",
 };
 
 export default function KursPage() {
   return (
     <Page
-      title="Kurs og workshops"
-      subtitle="3 timer – 1 dag. Praktisk og tilpasset."
-      spacing="roomy"
-      size="lg"
-    >
-      <section className="grid gap-4 md:grid-cols-2">
-        {[
-          { title: "Bedre ledelse i praksis", href: "/kurs/ledelse-workshop", desc: "Verktøy, samtaler, forventninger og kultur." },
-          { title: "Kapitalplan på 30 dager", href: "/kurs/kapitalplan", desc: "Finansiering uten å stoppe salget." },
-          { title: "Kommunikasjon i team", href: "/kurs/kommunikasjon-team", desc: "Tydelighet, roller og samarbeid." },
-          { title: "Digital strategi", href: "/kurs/digital-strategi", desc: "Nettside, nettbutikk eller portal – hva lønner seg?" },
-        ].map((c) => (
-          <a key={c.href} href={c.href} className="rounded-(--radius) border border-border bg-surface p-6 hover:shadow-(--shadow) transition">
-            <div className="text-lg font-bold">{c.title}</div>
-            <p className="mt-2 text-muted">{c.desc}</p>
-            <div className="mt-4 font-semibold" style={{ color: "var(--link)" }}>Les mer →</div>
-          </a>
-        ))}
-      </section>
+      >
+      <div className="space-y-10">
+        <KursHero />
+        <Seksjon1Workshop />
+        <Seksjon2Ledelse />
+        <Seksjon3Kommunikasjon />
+        <Seksjon4SalgOgCRM />
+        <Seksjon5DigitalStrategi />
+        <Seksjon6Nettbutikk />
+        <Seksjon7Kapitalplan />
+        <Seksjon8Kontakt />
+      </div>
     </Page>
   );
 }

@@ -1,33 +1,29 @@
-import type { Metadata } from "next";
 import Page from "@/components/layout/Page";
 
-export const metadata: Metadata = {
-  title: "Foredrag – Øystein Remøy",
-  description: "Foredrag om ledelse, kapital, kommunikasjon og digital posisjon.",
-};
+import Seksjon1Hero from "./seksjon/Seksjon1Hero";
+import Seksjon2Ledelse from "./seksjon/Seksjon2Ledelse";
+import Seksjon3Spekteret from "./seksjon/Seksjon3Spekteret";
+import Seksjon4Salg from "./seksjon/Seksjon4Salg";
+import Seksjon5Investor from "./seksjon/Seksjon5Investor";
+import Seksjon6Endring from "./seksjon/Seksjon6Endring";
+import Seksjon7Posisjon from "./seksjon/Seksjon7Posisjon";
+import Seksjon8Kontakt from "./seksjon/Seksjon8Kontakt";
 
 export default function ForedragPage() {
   return (
     <Page
-      title="Foredrag"
-      subtitle="45–60 minutter. Humor, energi og konkrete grep."
-      spacing="roomy"
-      size="lg"
+     
     >
-      <section className="grid gap-4 md:grid-cols-2">
-        {[
-          { title: "Ingen dårlige ansatte – bare dårlig ledelse", href: "/foredrag/ledelse", desc: "Tydelighet, kultur og praktiske grep som virker." },
-          { title: "Investor vs annen kapital", href: "/foredrag/kapital", desc: "Hvordan skaffe kapital mens du bygger plan og kunder." },
-          { title: "Nevrodiversitet: humor og samspill", href: "/foredrag/nevrodiversitet", desc: "Kommunikasjon, misforståelser og styrker i team." },
-          { title: "Ta en digital posisjon", href: "/foredrag/digital-posisjon", desc: "Bygg din egen plattform/portal i stedet for å leie oppmerksomhet." },
-        ].map((c) => (
-          <a key={c.href} href={c.href} className="rounded-(--radius) border border-border bg-surface p-6 hover:shadow-(--shadow) transition">
-            <div className="text-lg font-bold">{c.title}</div>
-            <p className="mt-2 text-muted">{c.desc}</p>
-            <div className="mt-4 font-semibold" style={{ color: "var(--link)" }}>Les mer →</div>
-          </a>
-        ))}
-      </section>
+      <div className="grid gap-14">
+        <Seksjon1Hero />
+        <Seksjon2Ledelse />
+        <Seksjon3Spekteret />
+        <Seksjon4Salg />
+        <Seksjon5Investor />
+        <Seksjon6Endring />
+        <Seksjon7Posisjon />
+        <Seksjon8Kontakt />
+      </div>
     </Page>
   );
 }
