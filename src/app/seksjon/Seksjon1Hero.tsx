@@ -35,7 +35,7 @@ export default function Seksjon1Hero() {
   Som leder motiveres jeg av å gjøre andre bedre – og innen markedsføring trives jeg
   best med de som vil ta en tydelig posisjon i markedet sitt. Ofte ender det med:{" "}
   <span className="font-semibold text-[#003366]">
-    «Ja.. ja.. det måtte en Sunnmøring til.»
+    «Ja.. ja.. det måtte en Sunnmøring til 😝.»
   </span>
 </p>
 

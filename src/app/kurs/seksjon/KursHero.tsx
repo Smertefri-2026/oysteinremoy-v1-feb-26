@@ -1,30 +1,39 @@
+// src/app/kurs/seksjon/KursHero.tsx
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import { BadgeCheck, Clock, MapPin, Users } from "lucide-react";
 
 export default function KursHero() {
+  const points = [
+    { icon: Clock, title: "Varighet", desc: "3t / 1/2 dag / 1 dag (tilpasses)" },
+    { icon: Users, title: "Deltakere", desc: "5–50 (kan tilpasses)" },
+    { icon: MapPin, title: "Format", desc: "Onsite / digital" },
+    { icon: BadgeCheck, title: "Inkludert", desc: "Maler, oppgaver og oppsummering" },
+  ];
+
   return (
     <section className="overflow-hidden rounded-(--radius) bg-surface shadow-sm">
       <div className="bg-linear-to-br from-[rgba(0,51,102,0.10)] via-[rgba(0,95,86,0.06)] to-transparent">
-        <div className="p-8 md:p-12">
-          <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+        <div className="p-4 sm:p-6 md:p-10 lg:p-12">
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            {/* Left */}
             <div className="space-y-5">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(44,44,44,0.08)] bg-surface px-4 py-2 text-sm text-muted">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-2 text-sm text-muted">
                 <span className="h-2 w-2 rounded-full bg-[#005F56]" />
                 Kurs & workshops
               </div>
 
-              <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
                 Workshops som gir fart –{" "}
                 <span className="text-[#005F56]">og som blir gjennomført</span>
               </h1>
 
-              <p className="text-muted text-base md:text-lg max-w-xl">
+              <p className="text-muted text-base sm:text-lg max-w-xl">
                 Konkrete oppgaver, maler og beslutninger der og da. Du går ut med en plan,
                 en struktur og neste steg som faktisk er lett å gjøre.
               </p>
 
-              <div className="flex flex-wrap gap-3 pt-2">
+              <div className="flex flex-wrap gap-3 pt-1">
                 <Button asChild variant="primary">
                   <a href="#kontakt">Book workshop</a>
                 </Button>
@@ -33,34 +42,36 @@ export default function KursHero() {
                 </Button>
               </div>
 
-              <div className="text-sm text-muted pt-2">
+              <div className="text-sm text-muted pt-1">
                 Struktur • tempo • eierskap
               </div>
             </div>
 
-            <Card className="p-6">
+            {/* Right */}
+            <Card className="p-4 sm:p-6">
               <div className="text-base font-bold">Praktisk info</div>
 
-              <div className="mt-4 grid gap-2 text-sm text-muted">
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-[#003366]" />
-                  3 timer, 1/2 dag eller 1 dag (tilpasses)
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-[#003366]" />
-                  5–50 deltakere (kan tilpasses)
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-[#003366]" />
-                  Onsite / digital
-                </div>
-                <div className="flex items-center gap-2">
-                  <BadgeCheck className="h-4 w-4 text-[#003366]" />
-                  Inkluderer maler, oppgaver og oppsummering
-                </div>
+              <div className="mt-4 grid gap-3">
+                {points.map((p) => {
+                  const Icon = p.icon;
+                  return (
+                    <div
+                      key={p.title}
+                      className="flex items-start gap-3 rounded-(--radius) bg-(--surface-2) border border-[rgba(2,6,23,0.08)] px-4 py-3"
+                    >
+                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/60 border border-[rgba(2,6,23,0.08)]">
+                        <Icon className="h-5 w-5 text-[#003366]" />
+                      </div>
+                      <div className="leading-tight">
+                        <div className="text-sm font-extrabold">{p.title}</div>
+                        <div className="text-xs text-muted leading-snug">{p.desc}</div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
-              <div className="mt-4 rounded-(--radius) border border-[rgba(44,44,44,0.08)] bg-(--surface-2) px-4 py-3 text-sm text-muted">
+              <div className="mt-4 rounded-(--radius) border border-[rgba(2,6,23,0.08)] bg-surface px-4 py-3 text-sm text-muted">
                 Tips: Send mål + deltakerantall + format – så foreslår jeg opplegg.
               </div>
             </Card>

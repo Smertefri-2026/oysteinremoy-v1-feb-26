@@ -1,5 +1,5 @@
+// src/components/layout/Page.tsx
 import React from "react";
-import Container from "@/components/ui/Container";
 
 type Props = {
   children: React.ReactNode;
@@ -7,7 +7,6 @@ type Props = {
   subtitle?: string;
   actions?: React.ReactNode;
   spacing?: "tight" | "normal" | "roomy";
-  size?: "sm" | "md" | "lg";
 };
 
 const spacingMap = {
@@ -22,29 +21,32 @@ export default function Page({
   subtitle,
   actions,
   spacing = "roomy",
-  size = "lg",
 }: Props) {
   const hasHeader = !!title || !!subtitle || !!actions;
 
   return (
-    <main className="min-h-screen bg-bg text-text">
-      <Container className={`py-8 sm:py-12 ${spacingMap[spacing]}`} size={size}>
-        {hasHeader ? (
-          <header className="flex items-start justify-between gap-4">
-            <div className="min-w-0">
-              {title ? (
-                <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
-                  {title}
-                </h1>
-              ) : null}
-              {subtitle ? <p className="mt-2 text-muted">{subtitle}</p> : null}
-            </div>
-            {actions ? <div className="shrink-0">{actions}</div> : null}
-          </header>
-        ) : null}
+    <div className={["py-6 sm:py-10 lg:py-12", spacingMap[spacing]].join(" ")}>
+      {hasHeader ? (
+        <header
+          className={[
+            "flex flex-col gap-3",
+            "md:flex-row md:items-start md:justify-between md:gap-6",
+          ].join(" ")}
+        >
+          <div className="min-w-0">
+            {title ? (
+              <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+                {title}
+              </h1>
+            ) : null}
+            {subtitle ? <p className="mt-2 text-muted max-w-prose">{subtitle}</p> : null}
+          </div>
 
-        {children}
-      </Container>
-    </main>
+          {actions ? <div className="shrink-0 md:pt-1">{actions}</div> : null}
+        </header>
+      ) : null}
+
+      {children}
+    </div>
   );
 }

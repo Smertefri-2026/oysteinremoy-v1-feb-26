@@ -14,7 +14,7 @@ export default function ForedragPage() {
     <Page
      
     >
-      <div className="grid gap-14">
+    <div className="flex flex-col gap-16">
         <Seksjon1Hero />
         <Seksjon2Ledelse />
         <Seksjon3Spekteret />

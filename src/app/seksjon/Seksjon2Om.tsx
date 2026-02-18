@@ -38,8 +38,9 @@ export default function Seksjon2Om() {
       </div>
 
       <div className="grid gap-4">
-        <Card className="p-0 overflow-hidden">
-          <div className="relative aspect-4/5">
+        {/* Beige ramme + bilde inni */}
+        <div className="media-frame">
+          <div className="relative aspect-4/5 overflow-hidden rounded-xl">
             <Image
               src="/Øystein-Remøy-eidsvoll.jpeg"
               alt="Øystein Remøy"
@@ -47,9 +48,9 @@ export default function Seksjon2Om() {
               className="object-cover"
             />
           </div>
-        </Card>
+        </div>
 
-            <div className="text-sm text-muted">
+        <div className="text-sm text-muted">
           Filminnspilling på Eidsvollsbygningen.
         </div>
       </div>

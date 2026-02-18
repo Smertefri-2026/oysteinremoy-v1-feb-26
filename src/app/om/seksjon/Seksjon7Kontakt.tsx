@@ -15,9 +15,11 @@ export default function Seksjon7Kontakt() {
         </p>
       </div>
 
-      <Card className="p-6">
-        <ContactForm />
-      </Card>
+      <div className="max-w-2xl mx-auto w-full">
+        <Card className="p-6">
+          <ContactForm />
+        </Card>
+      </div>
     </section>
   );
 }

@@ -1,3 +1,4 @@
+// src/app/foredrag/seksjon/FeatureSplit.tsx
 import type { LucideIcon } from "lucide-react";
 
 type Props = {
@@ -24,19 +25,20 @@ export default function FeatureSplit({
   return (
     <section
       className={[
-        "rounded-(--radius)",
-        "border border-[rgba(2,6,23,0.08)]", // mykere ramme
-        "bg-surface",
-        "p-6 md:p-8",
-        "grid gap-6 md:grid-cols-2 md:items-center",
+        // “Forside-følelse”: enkel, flat, lite støy
+        "rounded-(--radius) bg-surface border border-[rgba(2,6,23,0.08)] shadow-sm",
+        // Mobil først: mindre padding
+        "p-4 sm:p-6 md:p-8",
+        // Layout
+        "grid gap-5 md:gap-6 md:grid-cols-2 md:items-center",
       ].join(" ")}
     >
       {/* TEXT */}
       <div className={flip ? "md:order-2" : ""}>
         {badge ? (
-          <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(2,6,23,0.10)] bg-(--surface-2) px-3 py-1 text-xs font-semibold">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(2,6,23,0.08)] bg-surface px-3 py-1 text-xs font-semibold">
             {Icon ? (
-              <span className="grid h-6 w-6 place-items-center rounded-full bg-white border border-[rgba(2,6,23,0.08)]">
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-white/60 border border-[rgba(2,6,23,0.08)]">
                 <Icon className="h-4 w-4 text-[#003366]" />
               </span>
             ) : null}
@@ -44,15 +46,17 @@ export default function FeatureSplit({
           </div>
         ) : null}
 
-        <h2 className="mt-3 text-xl md:text-2xl font-extrabold tracking-tight">
+        <h2 className="mt-3 text-xl sm:text-2xl font-extrabold tracking-tight">
           {title}
         </h2>
 
         {description ? (
-          <p className="mt-2 text-muted max-w-prose">{description}</p>
+          <p className="mt-2 text-muted max-w-prose text-sm sm:text-base">
+            {description}
+          </p>
         ) : null}
 
-        {bullets?.length ? (
+        {bullets.length ? (
           <ul className="mt-4 grid gap-2 text-sm">
             {bullets.map((b) => (
               <li key={b} className="flex gap-2">
@@ -64,31 +68,17 @@ export default function FeatureSplit({
         ) : null}
       </div>
 
-      {/* IMAGE */}
+      {/* IMAGE (uten “boks i boks”) */}
       <div className={flip ? "md:order-1" : ""}>
-        <div className="grid place-items-center">
-          <div
-            className={[
-              "w-full max-w-115",
-              "rounded-2xl",
-              "bg-(--surface-2)", // gjør at det ikke ser “svart ramme” ut
-              "border border-[rgba(2,6,23,0.06)]", // enda mykere border
-              "shadow-[0_10px_25px_rgba(2,6,23,0.08)]", // subtil premium shadow
-              "p-3 md:p-4", // litt luft rundt bildet
-            ].join(" ")}
-          >
-            {imageSrc ? (
-              <img
-                src={imageSrc}
-                alt={imageAlt || ""}
-                className="w-full h-auto rounded-xl"
-              />
-            ) : (
-              // Hvis du mangler bilde: viser en pen placeholder uten “svart ramme”
-              <div className="aspect-video rounded-xl bg-[linear-gradient(135deg,rgba(0,95,86,0.10),rgba(0,51,102,0.10))]" />
-            )}
-          </div>
-        </div>
+        {imageSrc ? (
+          <img
+            src={imageSrc}
+            alt={imageAlt || ""}
+            className="w-full h-auto rounded-2xl border border-[rgba(2,6,23,0.08)]"
+          />
+        ) : (
+          <div className="aspect-video rounded-2xl border border-[rgba(2,6,23,0.08)] bg-[linear-gradient(135deg,rgba(0,95,86,0.08),rgba(0,51,102,0.08))]" />
+        )}
       </div>
     </section>
   );

@@ -1,5 +1,4 @@
 // src/app/om/page.tsx
-import type { Metadata } from "next";
 import Page from "@/components/layout/Page";
 
 import Seksjon1Hero from "./seksjon/Seksjon1Hero";
@@ -10,14 +9,10 @@ import Seksjon5Mennesker from "./seksjon/Seksjon5Mennesker";
 import Seksjon6Stil from "./seksjon/Seksjon6Stil";
 import Seksjon7Kontakt from "./seksjon/Seksjon7Kontakt";
 
-
-
 export default function OmPage() {
   return (
-    <Page
-     
-    >
-      <div className="grid gap-14">
+    <Page>
+    <div className="flex flex-col gap-16">
         <Seksjon1Hero />
         <Seksjon2Bakgrunn />
         <Seksjon3Erfaring />
