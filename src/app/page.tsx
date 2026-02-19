@@ -7,11 +7,31 @@ import Seksjon4Foredrag from "@/app/seksjon/Seksjon4Foredrag";
 import Seksjon5Kurs from "@/app/seksjon/Seksjon5Kurs";
 import Seksjon6Radgivning from "@/app/seksjon/Seksjon6Radgivning";
 import Seksjon7Kontakt from "@/app/seksjon/Seksjon7Kontakt";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Øystein Remøy – Foredrag, kurs og markedsføring",
   description: "Foredrag, kurs og markedsføring: ledelse, gjennomføring og vekst.",
 };
+
+<Script
+  id="person-schema"
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Øystein Remøy",
+      url: "https://oysteinremoy.no/",
+      image: "https://oysteinremoy.no/oystein-remoy-pt.png",
+      jobTitle: ["Foredragsholder", "Rådgiver", "Markedsfører"],
+      sameAs: [
+        "https://pressevern.no/"
+        // legg til LinkedIn senere hvis du vil
+      ],
+    }),
+  }}
+/>
 
 export default function HomePage() {
   return (
