@@ -56,7 +56,7 @@ export default function Seksjon1Hero() {
               <div className="grid gap-5 md:grid-cols-[0.95fr_1.05fr] md:items-start">
                 <div className="relative overflow-hidden rounded-(--radius) bg-[rgba(0,51,102,0.06)] border border-[rgba(2,6,23,0.06)] shadow-sm">
                   <Image
-                    src="/Øystein-Remøy-pt.png"
+src="/oystein-remoy-pt.png"
                     alt="Øystein Remøy"
                     width={800}
                     height={800}
