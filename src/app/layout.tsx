@@ -1,5 +1,6 @@
 // src/app/layout.tsx
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
 import "./globals.css";
 
 import { Inter, Alex_Brush } from "next/font/google";
@@ -18,6 +19,15 @@ const alexBrush = Alex_Brush({
   subsets: ["latin"],
   variable: "--font-logo",
 });
+
+// ✅ Fingerprint i <head> (lett å verifisere via curl/view-source)
+export const metadata: Metadata = {
+  title: "Øystein Remøy",
+  description: "Nettside for Øystein Remøy.",
+  other: {
+    "x-build-id": "oysteinremoy-v1-feb-26-c841ddb",
+  },
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

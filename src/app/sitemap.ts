@@ -1,12 +1,9 @@
 // src/app/sitemap.ts
 import type { MetadataRoute } from "next";
 
-const SITE = "https://oysteinremoy.no";
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const baseUrl = "https://oysteinremoy.no";
 
-  // Legg inn sidene du har i appen din her
   const routes = [
     "",
     "/om",
@@ -16,10 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/kontakt",
   ];
 
+  const now = new Date();
+
   return routes.map((path) => ({
-    url: `${SITE}${path}`,
+    url: `${baseUrl}${path}`,
     lastModified: now,
-    changeFrequency: "weekly",
+    changeFrequency: path === "" ? "weekly" : "monthly",
     priority: path === "" ? 1 : 0.7,
   }));
 }
