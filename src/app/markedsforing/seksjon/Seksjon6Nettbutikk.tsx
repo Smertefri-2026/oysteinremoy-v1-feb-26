@@ -48,7 +48,7 @@ export default function Seksjon6Nettbutikk() {
             <div className="rounded-2xl border border-[rgba(2,6,23,0.10)] bg-[#F3E8DA] p-3 shadow-sm">
               <div className="relative aspect-4/3 overflow-hidden rounded-xl">
                 <Image
-                  src="/markedsforing/nettbutikk.jpg"
+                  src="/markedsforing/oystein-remoy-nettbutikk.jpg"
                   alt="Nettbutikk og konvertering"
                   fill
                   className="object-cover"

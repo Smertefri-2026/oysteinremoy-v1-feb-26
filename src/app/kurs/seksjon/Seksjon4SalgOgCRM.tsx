@@ -47,7 +47,7 @@ export default function Seksjon4SalgOgCRM() {
           <div className="w-full max-w-100">
             <div className="rounded-2xl border border-[rgba(2,6,23,0.10)] bg-[#F3E8DA] p-3 shadow-sm">
               <div className="relative aspect-4/3 overflow-hidden rounded-xl">
-                <Image src="/kurs/salg-crm.jpg" alt="Salg og CRM" fill className="object-cover" />
+                <Image src="/kurs/oystein-remoy-salg-crm.jpg" alt="Salg og CRM" fill className="object-cover" />
               </div>
             </div>
           </div>

@@ -48,7 +48,7 @@ export default function Seksjon5DigitalStrategi() {
             <div className="rounded-2xl border border-[rgba(2,6,23,0.10)] bg-[#F3E8DA] p-3 shadow-sm">
               <div className="relative aspect-4/3 overflow-hidden rounded-xl">
                 <Image
-                  src="/kurs/digital-strategi.jpg"
+                  src="/kurs/oystein-remoy-digital-strategi.jpg"
                   alt="Digital strategi"
                   fill
                   className="object-cover"

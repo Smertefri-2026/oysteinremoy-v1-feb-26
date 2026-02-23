@@ -45,7 +45,7 @@ export default function Seksjon6Stil() {
               <div className="rounded-2xl border border-[rgba(2,6,23,0.10)] bg-[#F3E8DA] p-3 shadow-sm">
               <div className="relative aspect-4/3 overflow-hidden rounded-xl">
                 <Image
-                  src="/om/stil.jpg"
+                  src="/om/oystein-remoy-stil.jpg"
                   alt="Arbeidsstil"
                   fill
                   className="object-cover"

@@ -47,7 +47,7 @@ export default function Seksjon2Ledelse() {
           <div className="w-full max-w-100">
             <div className="rounded-2xl border border-[rgba(2,6,23,0.10)] bg-[#F3E8DA] p-3 shadow-sm">
               <div className="relative aspect-4/3 overflow-hidden rounded-xl">
-                <Image src="/kurs/ledelse.jpg" alt="Kurs i ledelse" fill className="object-cover" />
+                <Image src="/kurs/oystein-remoy-ledelse.jpg" alt="Kurs i ledelse" fill className="object-cover" />
               </div>
             </div>
           </div>

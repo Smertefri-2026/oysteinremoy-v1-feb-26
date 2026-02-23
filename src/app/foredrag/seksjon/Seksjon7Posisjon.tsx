@@ -49,7 +49,7 @@ export default function Seksjon7Posisjon() {
             <div className="rounded-2xl border border-[rgba(2,6,23,0.10)] bg-[#F3E8DA] p-3 shadow-sm">
               <div className="relative aspect-4/3 overflow-hidden rounded-xl">
                 <Image
-                  src="/foredrag/posisjon.jpg"
+                  src="/foredrag/oystein-remoy-posisjon.jpg"
                   alt="Posisjon og tydelig budskap"
                   fill
                   className="object-cover"

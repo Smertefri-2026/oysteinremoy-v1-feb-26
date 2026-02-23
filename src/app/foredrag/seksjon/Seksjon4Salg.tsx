@@ -49,7 +49,7 @@ export default function Seksjon4Salg() {
             <div className="rounded-2xl border border-[rgba(2,6,23,0.10)] bg-[#F3E8DA] p-3 shadow-sm">
               <div className="relative aspect-4/3 overflow-hidden rounded-xl">
                 <Image
-                  src="/foredrag/salg.jpg"
+                  src="/foredrag/oystein-remoy-salg.jpg"
                   alt="Salgskurs og mersalg"
                   fill
                   className="object-cover"

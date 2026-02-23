@@ -48,7 +48,7 @@ export default function Seksjon7Kapitalplan() {
             <div className="rounded-2xl border border-[rgba(2,6,23,0.10)] bg-[#F3E8DA] p-3 shadow-sm">
               <div className="relative aspect-4/3 overflow-hidden rounded-xl">
                 <Image
-                  src="/kurs/kapitalplan.jpg"
+                  src="/kurs/oystein-remoy-kapitalplan.jpg"
                   alt="Kapitalplan"
                   fill
                   className="object-cover"
